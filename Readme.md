@@ -4,5 +4,3 @@ This site will be a full functional Content Management System for a small Librar
 It will be able to view the books in them, add new ones, edit existing books as well as delete them.
 
 ## Tasks
-# Library-CMS
-# Library-CMS

@@ -1,0 +1,14 @@
+{
+    "name": "sophie/library-cms",
+    "description": "This is a class project for leanring php, we are creating a library CMS.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "sophie kim",
+            "email": "alexsophiekim@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^3.6"
+    }
+}
