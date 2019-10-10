@@ -1,4 +1,7 @@
-<?php require('../templates/header.php'); ?>
+<?php
+    require('../templates/header.php');
+
+?>
 
         <div class="row mb-2">
             <div class="col">
