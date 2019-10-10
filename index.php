@@ -1,5 +1,4 @@
 <?php require('templates/header.php'); ?>
-
         <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
             <div class="row">
                 <div class="col-12 col-md px-0 text-center text-md-left ">
