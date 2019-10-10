@@ -5,7 +5,7 @@ It will be able to view the books in them, add new ones, edit existing books as 
 
 ## Installation
 
-This project requiresa stable version of  [composer](https://getcomposer.org/) to run.
+This project requires a stable version of  [composer](https://getcomposer.org/) to run.
 
 ```bash
 # Clone the repo
@@ -19,18 +19,23 @@ Create a .env file in your root directory which will include the variable names 
 
 ```shell
 PROJECT_URL=
+
+DB_HOST=
+DB_USERNAME=
+DB_PASSWORD=
+DB_TABLE=
 ```
 A .env.example file has been provided.
 
 ### Database set up
-This project also requires a databse, I have provided my working database file which you can access at 1902Library.sql.  
-If you don't have your own database, you can import that file through phpmyadmin.  Note that you can only import an sql file into a blank database, so you can either make a new empty database, or empty your existing one.  
+This project also requires a database, I have provided my working database file which you can access at 1902Library.sql.  
+If you don't have your own database, you can import that file through phpmyadmin.  Note that you can only import an sql file into a blank database, so you can either make a new empty database, or empty your exisiting one.  
 Remember at the end of your day to export the sql file and include it in your project so you can continue with the information which you added in this class.
 
 ## Tasks
 **Task 1 - Wed 9th October**  
 Prepare the PHP project to also include movies.    
-You are to create at least these files and include all the necessary html code
+You are to create at least these files and include all the nessessary html code
 - allMovies.php
 - addMovie.php
 - singleMovie.php
