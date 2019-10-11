@@ -56,13 +56,13 @@
             if ($result && mysqli_affected_rows($dbc) > 0) {
                 $authorID = $dbc->insert_id;
             } else {
-                dis('Something went wrong with adding in our author');
+                die('Something went wrong with adding in our author');
             }
             // $authorID = 1;
             $booksSql = "INSERT INTO `books`(`title`, `year`, `description`, `author_id`) VALUES ('$safeTitle',$safeYear,'$safeDescription',$authorID)";
             $booksResult = mysqli_query($dbc, $booksSql);
             if ($booksResult && mysqli_affected_rows($dbc) > 0) {
-                header('Location: singlebook.php');
+                header('Location: singleBook.php');
             } else {
                 die('Something went wrong with adding in our books');
             }
