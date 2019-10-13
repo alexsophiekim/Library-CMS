@@ -1,8 +1,10 @@
 <?php
+
     require('../templates/header.php');
     // var_dump($_GET);
     $bookID  = $_GET['id'];
-    $sql = "SELECT * FROM `books` WHERE _id = $bookID";
+    // $sql = "SELECT * FROM `books` WHERE _id = $bookID";
+    $sql ="SELECT books.`_id` as bookID, `title`, `year`, `description`, authors.name as author_name FROM `books` INNER JOIN authors ON books.author_id = authors._id WHERE books._id = $bookID";
     $result = mysqli_query($dbc, $sql);
     if ($result && mysqli_affected_rows($dbc) > 0) {
         //mysqli_fetch_array - get only one, mysqli_fetch_all - get all
@@ -10,8 +12,8 @@
         // var_dump($singleBook);
 
     } elseif ($result && mysqli_affected_rows($dbc) === 0) {
-        // header('Location: ../errors/404.php');
-        die('404');
+        header('Location: ../errors/404.php');
+        // die('404');
     } else {
         die('Something went wrong with getting a single book');
     }
@@ -38,7 +40,7 @@
             <div class="col-12 col-sm-8 align-self-center">
                 <h3><?php echo $singleBook['title']; ?></h3>
                 <h5><?php echo $singleBook['year']; ?></h5>
-                <h4><?php echo $singleBook['author_id']; ?></h4>
+                <h4><?php echo $singleBook['author_name']; ?></h4>
             </div>
         </div>
 
@@ -61,7 +63,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Confirm Delete</button>
+                    <!-- <button type="button" class="btn btn-danger">Confirm Delete</button> -->
+                    <a href="books/delete.php" class="btn btn-danger">Confirm Delete</a>
                 </div>
             </div>
         </div>
