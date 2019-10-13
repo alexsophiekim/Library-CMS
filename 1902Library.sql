@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 11, 2019 at 12:37 AM
+-- Generation Time: Oct 13, 2019 at 10:50 PM
 -- Server version: 5.7.27-0ubuntu0.16.04.1
 -- PHP Version: 7.0.33-8+ubuntu16.04.1+deb.sury.org+1
 
@@ -36,9 +36,7 @@ CREATE TABLE `authors` (
 --
 
 INSERT INTO `authors` (`_id`, `name`) VALUES
-(1, 'test author'),
 (2, 'j k rowing'),
-(3, 'j k rowing'),
 (4, 'testauthor');
 
 -- --------------------------------------------------------
@@ -60,7 +58,11 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`_id`, `title`, `year`, `description`, `author_id`) VALUES
-(1, 'testbook', 2002, 'this is test book ', 4);
+(1, 'testbook', 2002, 'this is test book ', 4),
+(3, 'adfads', 2019, 'fdsafadsfasd', 2),
+(4, 'new book test', 2018, 'adfadsfasdfa', 2),
+(6, 'test author book', 2018, 'akdfab dfkjwegnfad czx', 4),
+(7, 'testrr', 2015, 'daskxrfafjb dfwdsfvadffwe', 4);
 
 -- --------------------------------------------------------
 
@@ -133,12 +135,12 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `_id` tinyint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `_id` tinyint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `_id` tinyint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `_id` tinyint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `directors`
 --
