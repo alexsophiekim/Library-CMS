@@ -8,7 +8,7 @@
         $result = mysqli_query($dbc, $sql);
         if ($result && mysqli_affected_rows($dbc) > 0) {
             $singleBook = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            var_dump($singleBook);
+            // var_dump($singleBook);
             extract($singleBook);
         } elseif ($result && mysqli_affected_rows($dbc) === 0) {
             header('Location: ../errors/404.php');
@@ -65,7 +65,9 @@
             array_push($errors, 'The description lengh must be no more than 65535 characters.');
         }
 
+
         if (empty($errors)) {
+            // die(); for prevent submit when doing test
             //convert as safe type version
             $safeTitle = mysqli_real_escape_string($dbc, $title);
             $safeAuthor = mysqli_real_escape_string($dbc, $author);
@@ -93,12 +95,18 @@
                 die('Something went wrong with finding an author');
             }
 
-
-
-            $booksSql = "INSERT INTO `books`(`title`, `year`, `description`, `author_id`) VALUES ('$safeTitle',$safeYear,'$safeDescription',$authorID)";
+            if (isset($_GET['id'])) {
+                $booksSql = "UPDATE `books` SET `title`='$safeTitle',`year`=$safeYear,`description`='$safeDescription',`author_id`=$authorID WHERE _id=$bookID";
+            } else {
+                $booksSql = "INSERT INTO `books`(`title`, `year`, `description`, `author_id`) VALUES ('$safeTitle',$safeYear,'$safeDescription',$authorID)";
+            }
+            var_dump($booksSql);
+            // die();
             $booksResult = mysqli_query($dbc, $booksSql);
             if ($booksResult && mysqli_affected_rows($dbc) > 0) {
-                $bookID = $dbc->insert_id;
+                if (!isset($_GET['id'])) {
+                    $bookID = $dbc->insert_id;
+                }
                 header('Location: singleBook.php?id='.$bookID);
             } else {
                 die('Something went wrong with adding in our books');
@@ -132,7 +140,7 @@
 
         <div class="row mb-2">
             <div class="col">
-                <form action="./books/addBook.php" method="post" enctype="multipart/form-data" autocomplete="off">
+                <form action="./books/addBook.php<?php if(isset($_GET['id'])){echo '?id='.$_GET['id'];};?>" method="post" enctype="multipart/form-data" autocomplete="off">
                     <div class="form-group">
                       <label for="title">Book Title</label>
                       <input type="text" class="form-control" name="title" placeholder="Enter book title" value="<?php  if (isset($title)) { echo $title; }; ?>">

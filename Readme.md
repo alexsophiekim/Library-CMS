@@ -67,20 +67,18 @@ Design them slightly differently than we have with our books section so that you
 Also prepare your database by making at least making a class diagram for how your movies and directors table will look. Whatever information you would like to have in your tables is up to you, but it must at least include 4 columns in your movies table. Don't just use the same columns as we have used for books.  
 If you would like you can then create your table through phpmyadmin, but make sure that you export your database when you are finished and include it in your project so it gets sent up to git.
 
-**Task 2 - Wed 10th October**  
+**Task 2 - Thur 10th October**  
 Add your tables for movies and directors into your database.  
 On your addMovie.php, validate your movies form with php validation when you submit the form. Remember to use the POST array to get values.  
 Errors should appear in a bootstrap alert just like the books form.  
 
 Something to remember, when you connect your two tables together by creating their relationship, both columns need to have a key, your id column has a primary key, and your director_id needs to have a key as well. To do that you need to click the index button on the structure tab of your movies table. You should then see a grey key appear next to it.
 
-**Task 3 - Wed 11th October**  
+**Task 3 - Fri 11th October**  
 Finish your movies form to be able to successfully add directors and movies into the database.  
 Because we haven't added the ability to prevent duplicate authors to be added into our database, at this stage, after you have successfully added in your first director, comment out the code to add a director and just set the $directorID variable to whatever the id of the director that you have tested as. In our addBook.php file, we do this on line 54-60.  
 
 Once you have added in a movie, then show them all on your allMovies.php page, and then the single Movie on singleMovie.php page as well.
-
-You can also create a 404.php file in a folder called errors/.
 
 **Task 4 - Mon 14th October**
 Fix error on movies where the add form should go to the single movie that you just added.
