@@ -1,10 +1,31 @@
 <?php
     require('../templates/header.php');
+
+    if (isset($_GET['id'])) {
+        $pageTitle = 'Edit Book';
+        $bookID  = $_GET['id'];
+        $sql ="SELECT books.`_id` as bookID, `title`, `year`, `description`, authors.name as author FROM `books` INNER JOIN authors ON books.author_id = authors._id WHERE books._id = $bookID";
+        $result = mysqli_query($dbc, $sql);
+        if ($result && mysqli_affected_rows($dbc) > 0) {
+            $singleBook = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            var_dump($singleBook);
+            extract($singleBook);
+        } elseif ($result && mysqli_affected_rows($dbc) === 0) {
+            header('Location: ../errors/404.php');
+        } else {
+            die('Something went wrong with getting a single book to edit');
+        }
+    } else {
+        $pageTitle = 'Add New Book';
+    }
+
+
     // var_dump($_POST);
     if ($_POST) {
         // var_dump($_POST['title']);
         // var_dump('You have submitted a form');
         extract($_POST);
+        // array to varible, imports variables from an array to the symbol table.
         // var_dump($title);
         // var_dump($author);
         // var_dump($description);
@@ -91,7 +112,7 @@
 
         <div class="row mb-2">
             <div class="col">
-                <h1>Add New Book</h1>
+                <h1><?php echo $pageTitle; ?></h1>
             </div>
         </div>
 
@@ -114,22 +135,22 @@
                 <form action="./books/addBook.php" method="post" enctype="multipart/form-data" autocomplete="off">
                     <div class="form-group">
                       <label for="title">Book Title</label>
-                      <input type="text" class="form-control" name="title"  placeholder="Enter book title" value="<?php if ($_POST){ echo $title; }; ?>">
+                      <input type="text" class="form-control" name="title" placeholder="Enter book title" value="<?php  if (isset($title)) { echo $title; }; ?>">
                     </div>
 
                     <div class="form-group">
                       <label for="year">Book Year</label>
-                      <input type="number" autocomplete="off" class="form-control" name="year"  placeholder="Enter the year it was released"max="<?php if ($_POST){ echo $year; }; ?>">
+                      <input type="number" autocomplete="off" class="form-control" name="year"  placeholder="Enter the year it was released"max="<?php echo date('Y'); ?>" value="<?php  if (isset($year)) { echo $year; }; ?>">
                     </div>
 
                     <div class="form-group author-group">
                       <label for="author">Author</label>
-                      <input type="text" autocomplete="off" class="form-control"  name="author" placeholder="Enter books author" value="<?php if ($_POST){ echo $author; }; ?>">
+                      <input type="text" autocomplete="off" class="form-control"  name="author" placeholder="Enter books author" value="<?php  if (isset($author)) { echo $author; }; ?>">
                     </div>
 
                     <div class="form-group">
                       <label for="description">Book Description</label>
-                      <textarea class="form-control" name="description" rows="8" cols="80" placeholder="Description about the book"><?php if ($_POST){ echo $description; }; ?></textarea>
+                      <textarea class="form-control" name="description" rows="8" cols="80" placeholder="Description about the book"><?php  if (isset($description)) { echo $description; }; ?></textarea>
                     </div>
 
                     <div class="form-group">

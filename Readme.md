@@ -67,7 +67,7 @@ Design them slightly differently than we have with our books section so that you
 Also prepare your database by making at least making a class diagram for how your movies and directors table will look. Whatever information you would like to have in your tables is up to you, but it must at least include 4 columns in your movies table. Don't just use the same columns as we have used for books.  
 If you would like you can then create your table through phpmyadmin, but make sure that you export your database when you are finished and include it in your project so it gets sent up to git.
 
-*Task 2 - Wed 10th October**  
+**Task 2 - Wed 10th October**  
 Add your tables for movies and directors into your database.  
 On your addMovie.php, validate your movies form with php validation when you submit the form. Remember to use the POST array to get values.  
 Errors should appear in a bootstrap alert just like the books form.  
